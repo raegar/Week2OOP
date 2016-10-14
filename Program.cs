@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading;
+
 
 namespace ConsoleApplication
 {
@@ -20,31 +22,34 @@ namespace ConsoleApplication
 
             while(true)
             {
-                string direction = "";
-                ConsoleKeyInfo keyPress = Console.ReadKey(true);
-                if(keyPress.Key == ConsoleKey.UpArrow)
+                if(Console.KeyAvailable)
                 {
-                    direction = "up";
-                }
-                if(keyPress.Key == ConsoleKey.DownArrow)
-                {
-                    direction = "down";
-                }
-                if(keyPress.Key == ConsoleKey.LeftArrow)
-                {
-                    direction = "left";
-                }
-                if(keyPress.Key == ConsoleKey.RightArrow)
-                {
-                    direction = "right";
-                }
+                    string direction = "";
+                    ConsoleKeyInfo keyPress = Console.ReadKey(true);
+                    if(keyPress.Key == ConsoleKey.UpArrow)
+                    {
+                        direction = "up";
+                    }
+                    if(keyPress.Key == ConsoleKey.DownArrow)
+                    {
+                        direction = "down";
+                    }
+                    if(keyPress.Key == ConsoleKey.LeftArrow)
+                    {
+                        direction = "left";
+                    }
+                    if(keyPress.Key == ConsoleKey.RightArrow)
+                    {
+                        direction = "right";
+                    }
 
-                player1.Move(direction);
+                    player1.Move(direction);
+                }
                 Console.Clear();
                 player1.Draw();
                 player2.Draw();
+                Thread.Sleep(1000/30);
             }
-            Console.ReadKey(true);
         }
     }
 }

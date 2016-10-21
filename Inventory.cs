@@ -54,9 +54,16 @@ namespace ConsoleApplication
 
         public void ListInventory()
         {
-            foreach(Item item in Items)
+            if(Items.Count > 0)
             {
-                item.Describe();
+                foreach(Item item in Items)
+                {
+                    item.Describe();
+                }
+            }
+            else
+            {
+                Console.WriteLine("Inventory is empty");
             }
         }
 
